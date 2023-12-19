@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student Details</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        .input-container {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 style="color:rgb(167, 24, 24);"><b>Task 1</b></h2>
+
+    <div id="inputContainer">
+    </div>
+    <button type="button" id="addFieldsBtn" style="background:rgb(181, 181, 223);">Add New One</button>
+    <script>
+        $(document).ready(function () {
+            function addFields() {
+                let inputContainer = $("#inputContainer");
+                $("input").focus(function () {
+                    $(this).css("background-color", "pink");
+                });
+                $("input").blur(function () {
+                    $(this).css("background-color", "white");
+                });
+                let newContainer = $("<div class='input-container'>" +
+                    "<input type='text' placeholder='Student Name'>" +
+                    "<input type='text' placeholder='Student Rollno'>" +
+                    "<input type='text' placeholder='Student Age'>" +
+                    "<button type='button' class='removeBtn' style='background-color:red;'>Remove</button>" +
+                    "</div>");
+                inputContainer.append(newContainer);
+                newContainer.find(".removeBtn").on("click", function () {
+                    $(this).closest(".input-container").remove();
+                });
+
+            }
+            $("#addFieldsBtn").on("click", function () {
+                addFields();
+            });
+
+
+        });
+    </script>
+
+</body>
+
+</html>
